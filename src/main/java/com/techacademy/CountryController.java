@@ -33,8 +33,8 @@ public class CountryController {
         service.updateCountry(code, name, population);
         return "redirect:/country/list";
     }
-    @GetMapping("/delete")
-    public String deleteCountryForm(Model model) {
+    @GetMapping(value = {"/delete","/delete/{code}/"})
+    public String deleteCountryForm(@PathVariable(name = "code", required = false) String code, Model model) {
         return "country/delete";
     }
     @PostMapping("/delete")
